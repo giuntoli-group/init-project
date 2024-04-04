@@ -1,5 +1,8 @@
 # Kickoff assignment
 
+[![hackmd-github-sync-badge](https://hackmd.io/xSCuTh_7TpGF2IKSgEMJ8A/badge)](https://hackmd.io/xSCuTh_7TpGF2IKSgEMJ8A)
+
+
 
 This document provides you with the fundamental tools used in your project. You will learn how to
 - use the terminal (command line)
