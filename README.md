@@ -8,16 +8,15 @@ This document provides you with the fundamental tools used in your project. You 
 - analyse the simulations using python
 - interpret the results
 
-==TODO: Refine these lists==
 
 At the end of this tutorial, you should be able to
 - find your way in the terminal using the fundamental commands 
 - connect to Habrok either directly from terminal (for mac and linux users) or through Putty (for windows users)
 - run your first simulation on the interactive node of Habrok 
 - understand the Bead-Spring model and the unit system
-- write your first Python script that analyses the simulations
 - call Python functions
 - plot your results using matplotlib
+- compare your numerical results to known theory
 
 
 Throughout this document, you will encounter some tasks. Please complete them in 10 days. You are highly encouraged to talk to each other and collaborate. If you are stuck in any of these steps, ask your supervisor for help. 
@@ -149,7 +148,7 @@ This should take approximately two minutes and you will see that information on 
 
 Polymer physics is a key area of study in materials science and engineering, focusing on understanding the behaviour of polymeric materials. Polymers are large molecules composed of repeating units, and they play a crucial role in a wide range of applications, from everyday household items to high-performance engineering materials. One of the fundamental models used in polymer physics, especially in coarse-grained molecular dynamics (CGMD) simulations, is the Bead-Spring model. This model represents polymers as a series of beads (monomers) connected by springs (bonds), simplifying the complex molecular structure into a more manageable form. This abstraction is particularly useful for studying the macroscopic properties of polymers, such as their elasticity, viscosity, and thermal behaviour, without having to learn chemistry.
 
-### Task 8: Read the first two chapters of Polymer Physics by Rubinstein
+### Task 8: Read the first chapter of Introduction to Polymer Physics by M. Doi
 
 The unit system in CGMD simulations typically involves reduced units. This system simplifies calculations and can be converted to real-world units based on the material being simulated if needed (you will probably not). The unit system in our LAMMPS simulations is known as Lennard-Jones (LJ) units. You will hear this name quite often. 
 
@@ -158,8 +157,13 @@ The unit system in CGMD simulations typically involves reduced units. This syste
 In the next section, you will learn about how to use python to calculate certain polymer properties. Here, we give a brief introduction to those.
 
 1. End-to-end distance: The measure of the linear size of the polymer molecule, important for understanding the spatial configuration of the polymer chain.
-2. Radius of gyration
-3. Mean squared displacement
+
+    $\vec{R}_{ee} = $
+2. Radius of gyration: A key metric for the size of the polymer, reflecting how its mass is distributed around the center of mass.
+
+    $R_g^2 = \frac{1}{N} \sum_{i=1}^{N} (\vec{R}_i - \vec{R}_{CM})^2 $ 
+
+3. Mean squared displacement: Offers insights into the motion of polymer segments over time, critical for studying diffusion processes.
 
 
 ## Part 4: Introduction to Python
@@ -236,5 +240,3 @@ After running your simulation and analysing the data with Python, the next step 
 1. What is the expected end-to-end distance of a polymer chain with 100 beads?
 2. What is the end-to-end distance your measured? How does it compare to the scaling law that you've learnt about?
     - Explain the difference between the theoretical and the numerical values of $R_{ee}$
-
-3. ==TODO==
