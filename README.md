@@ -113,7 +113,7 @@ pwd
 ```
 Make sure that your output is the same as the one below
 
-![image](https://github.com/giuntoli-group/init-project/.figs/blob/main/pwd_out.png?raw=true)
+![image](.figs/pwd_out.png)
 
 
 Now, we are ready to run our first simulation. Type the following
