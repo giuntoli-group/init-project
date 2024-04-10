@@ -1,8 +1,5 @@
 # Kickoff assignment
 
-[![hackmd-github-sync-badge](https://hackmd.io/xSCuTh_7TpGF2IKSgEMJ8A/badge)](https://hackmd.io/xSCuTh_7TpGF2IKSgEMJ8A)
-
-
 
 This document provides you with the fundamental tools used in your project. You will learn how to
 - use the terminal (command line)
@@ -108,16 +105,15 @@ using 1 OpenMP thread(s) per MPI task
 
 Once you verify that you have access to `lmp` command, hit `ctrl+c` to exit. Now, we are ready to run our first simulation. 
 
-### Task 4: Navigate to ```tutorial``` and copy the LAMMPS script and the data file from your computer to here. (TODO: add the chain creation with python as a separate step)
+### Task 4: Navigate to ```tutorial``` and copy the LAMMPS script and the data file from your computer to here.
 
 Type the following and make sure that you are in the correct directory and you have the necessary files.
-```bash=
+```bash
 pwd
-ls
 ```
-Make sure that your output is the same as the ones below
+Make sure that your output is the same as the one below
 
-![image](https://hackmd.io/_uploads/SkzEnE31C.png)
+![image](https://github.com/giuntoli-group/init-project/.figs/blob/main/image.jpg?raw=true)
 
 
 Now, we are ready to run our first simulation. Type the following
