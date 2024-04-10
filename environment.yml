@@ -1,0 +1,20 @@
+name: myenv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.6
+  - mamba
+  - mdanalysis
+  - pandas
+  - numpy
+  - ipython
+  - freud
+  - pip
+  - scipy
+  - signac
+  - signac-flow
+  - pip:
+    - atooms==3.4.1
+    - atooms-pp==3.0.1
+
+prefix: /home4/s123456/
