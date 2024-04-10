@@ -123,7 +123,7 @@ lmp -in in.single_chain
 ```
 This should take approximately two minutes and you will see that information on your screen at the end of the simulation.
 
-![image](https://hackmd.io/_uploads/H1geRV3J0.png)
+![image](.figs/lammps_output.png)
 
 
 ## Introduction to Polymer Physics
