@@ -8,6 +8,7 @@ This document provides you with the fundamental tools used in your project. You 
 - analyse the simulations using python
 - interpret the results
 
+==TODO: Refine these lists==
 
 At the end of this tutorial, you should be able to
 - find your way in the terminal using the fundamental commands 
@@ -37,7 +38,7 @@ Here are some fundamental commands you will use:
 - `rm` to remove files or directories
 - `cp` to copy files or directories
 
-> **DANGER**: Never type `rm -rf` in your home directory. This will delete everything in your system and it's not reversible.
+> **DANGER**: Never type `rm -rf *` in your home directory. This will delete everything in your system and it's not reversible.
 
 
 
@@ -76,7 +77,7 @@ echo $USER
 What is the output on the screen?
 
 
-## Running your first simulation
+## Part 2: Running your first simulation
 
 
 After connecting to Habrok, you'll navigate to a suitable directory to run your simulation. We will run this simple simulation on the interactive node, but please note that the purpose of the interactive node is to test your simulations. Never run an actual simulation on the login/interactive nodes once you start working your own project.
@@ -105,15 +106,31 @@ using 1 OpenMP thread(s) per MPI task
 
 Once you verify that you have access to `lmp` command, hit `ctrl+c` to exit. Now, we are ready to run our first simulation. 
 
-### Task 4: Navigate to ```tutorial``` and copy the LAMMPS script and the data file from your computer to here.
+### Task 4: Navigate to ```tutorial``` and copy the scripts and the data files from your computer to here.
 
 Type the following and make sure that you are in the correct directory and you have the necessary files.
-```bash
+```bash=
 pwd
+ls
 ```
-Make sure that your output is the same as the one below
+Make sure that your output is the same as the ones below
 
 ![image](.figs/pwd_out.png)
+
+
+
+Let's generate a polymer chain that we will simulate. We use Python to generate our polymer architecture. This is a simple example of an architecture creation, but you will use the same principle in your project too.
+
+
+### Task 5: Generate a polymer chain of length 100 using the command below
+
+
+```bash
+python create_chain.py 100
+```
+Here, 100 is an input to the Python script. The script is initially written to generate star like architectures that you might work with. You don't need to know what the script does at this point.
+
+### Task 6: Run the simulation using the command below
 
 
 Now, we are ready to run our first simulation. Type the following
@@ -126,52 +143,98 @@ This should take approximately two minutes and you will see that information on 
 ![image](.figs/lammps_output.png)
 
 
-## Introduction to Polymer Physics
+### Task 7: Search for all the command you see in `in.single_chain` on LAMMPS [documentation](https://docs.lammps.org/Manual.html) and learn what they do
 
-## TODO:
+## Part 3: Introduction to Polymer Physics
 
-Understanding the Bead-Spring model is crucial in coarse-grained molecular dynamics (CGMD) simulations. This model simplifies the polymer chain into a series of beads (monomers) connected by springs (bonds). This abstraction allows us to study the properties of polymers without having to learn chemistry.
+Polymer physics is a key area of study in materials science and engineering, focusing on understanding the behaviour of polymeric materials. Polymers are large molecules composed of repeating units, and they play a crucial role in a wide range of applications, from everyday household items to high-performance engineering materials. One of the fundamental models used in polymer physics, especially in coarse-grained molecular dynamics (CGMD) simulations, is the Bead-Spring model. This model represents polymers as a series of beads (monomers) connected by springs (bonds), simplifying the complex molecular structure into a more manageable form. This abstraction is particularly useful for studying the macroscopic properties of polymers, such as their elasticity, viscosity, and thermal behaviour, without having to learn chemistry.
 
-### Task 5: Read the first two chapters of Polymer Physics by Rubinstein
+### Task 8: Read the first two chapters of Polymer Physics by Rubinstein
 
 The unit system in CGMD simulations typically involves reduced units. This system simplifies calculations and can be converted to real-world units based on the material being simulated if needed (you will probably not). The unit system in our LAMMPS simulations is known as Lennard-Jones (LJ) units. You will hear this name quite often. 
 
-### Task 6: Read the [wikipedia page](https://en.wikipedia.org/wiki/Lennard-Jones_potential#) of Lennard-Jones potential and corresponding LAMMPS [units](https://docs.lammps.org/units.html)
+### Task 9: Read the [wikipedia page](https://en.wikipedia.org/wiki/Lennard-Jones_potential#) of Lennard-Jones potential and corresponding LAMMPS [units](https://docs.lammps.org/units.html)
+
+In the next section, you will learn about how to use python to calculate certain polymer properties. Here, we give a brief introduction to those.
+
+1. End-to-end distance: The measure of the linear size of the polymer molecule, important for understanding the spatial configuration of the polymer chain.
+2. Radius of gyration
+3. Mean squared displacement
 
 
-### Task 7: Search for all the command you see in `in.single_chain` on LAMMPS [documentation](https://docs.lammps.org/Manual.html) and learn what they do
+## Part 4: Introduction to Python
 
 
-## Introduction to Python
+Python is a powerful programming language that's widely used in scientific computing for its simplicity and the extensive library ecosystem. For analysing simulations, you'll often use libraries such as Numpy for numerical calculations and matplotlib for plotting. On top of the most non-standard standard libraries of Python (Numpy, scipy, pandas, etc.), we heavily rely on the following libraries: MDAnalysis, freud, atooms, and signac. It is very likely that you're not familiar with these libraries. Luckily you can always ask us or read their documentations. The latter is highly encouraged and [here](https://how-to.dev/how-to-read-the-documentation) is a guideline on how to read the documentation. Note that this applies to terminal commands as well. If you don't remember how to use a certain command, type `man` in front of the command. For python functions, type `help(<your_function_here>)` in your interpreter. To be able to use these libraries you need to install them in your Python environment. We will use conda environments. Conda is a package and environment manager. 
 
+Optional task: Read more about what conda is and what it does [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
-Python is a powerful programming language that's widely used in scientific computing for its simplicity and the extensive library ecosystem. For analysing simulations, you'll often use libraries such as Numpy for numerical calculations and matplotlib for plotting. We heavily rely on the following libraries: MDAnalysis, signac, ... . It is very likely that you're not familiar with these libraries. Luckily you can always ask us or read their documentations. The latter is highly encouraged and [here](https://how-to.dev/how-to-read-the-documentation) is a guideline on how to read the documentation. Note that this applies to terminal commands as well. If you don't remember how to use a certain command, type `man` in front of the command. For python functions, type `help(<your_function_here>)` in your interpreter.
+### Task 10: Create a conda environment on Habrok and install the required packages.
 
-## TODO:
+You don't need to install conda on Habrok. Use the existing module similar to how we loaded LAMMMPS. Run
 
-Here's how to install these libraries using conda:
+```bash=
+module load Anaconda3/2023.03-1
+conda --version
+```
+The output should be similar to this `conda 23.7.4`. We've made a list of libraries you need in the `environment.yml` file. 
+
+==NOTE: Make sure to modify the line `prefix: /home4/s123456/` in `environment.yml` file with the correct path before running the below command.== Type `cd /scratch/$USER` and replace **prefix: `/home4/s123456/`** by the output of this command. You can use text editors such as [vim](https://opensource.com/article/19/3/getting-started-vim) or [nano](https://tecadmin.net/getting-started-with-nano/) on Habrok. These are pre-installed in all Linux distributions, so you can simply type `vim` or `nano` to get started.
+
+Once conda is loaded and the enviroment file is updated accordingly, you can run the below command to install the libraries. This process might take a couple of minutes, be patient.
 
 ```bash
 conda env create -f environment.yml
 ```
 
-And a simple script to analyse your simulation results:
+### Task 11: Run the post processing script and plot the results.
+
+We can now analyse our first simulation. The following script computes the mean-squared displacement of the beads over the simulation trajectory. It also computes the end-to-end distance of our polymer chain at each time frame. Your task is to run the `post_processing.py` script and plot the results. 
 
 ```bash
 python post_processing.py
 ```
 
-Plot the anlysis results:
+
+Plot the analysis results:
 
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Load the files
+times_log = np.loadtxt('times_log.txt')
+#######################
+# YOUR CODE GOES HERE #
+
+#######################
+
+# What is the average end-to-end distance?
+# Write a code to compute this average and the standard deviation.
+# You can use numpy.
+
+#######################
+# YOUR CODE GOES HERE #
+
+#######################
+
+# Make two separate figures using matplotlib
+# Plot the radius of gyration as a function of time (linearly)
+# Plot the mean-squared displacement as a function of time (logarithmically)
+
+#######################
+# YOUR CODE GOES HERE #
+
+#######################
 ```
 
-## Interpreting your results
+## Part 5: Interpreting your results
 
-After running your simulation and analysing the data with Python, the next step is to interpret your results. This involves understanding what the data tell you about the polymer's behaviour under certain conditions and comparing your findings with theoretical predictions.
+After running your simulation and analysing the data with Python, the next step is to interpret your results. This involves understanding what the data tell you about the polymer's behaviour under certain conditions and comparing your findings with theoretical predictions. Answer the following questions based on the theory you've learnt and on your simulation results.
 
-Plotting your results can help visualise trends and patterns that may not be apparent from raw data alone. For example, you might plot the average end-to-end distance of a polymer chain as a function of temperature to study its thermal properties.
+1. What is the expected end-to-end distance of a polymer chain with 100 beads?
+2. What is the end-to-end distance your measured? How does it compare to the scaling law that you've learnt about?
+    - Explain the difference between the theoretical and the numerical values of $R_{ee}$
 
+3. ==TODO==
