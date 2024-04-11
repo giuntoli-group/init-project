@@ -146,9 +146,11 @@ This should take approximately two minutes and you will see that information on 
 
 ## Part 3: Introduction to Polymer Physics
 
-Polymer physics is a key area of study in materials science and engineering, focusing on understanding the behaviour of polymeric materials. Polymers are large molecules composed of repeating units, and they play a crucial role in a wide range of applications, from everyday household items to high-performance engineering materials. One of the fundamental models used in polymer physics, especially in coarse-grained molecular dynamics (CGMD) simulations, is the Bead-Spring model. This model represents polymers as a series of beads (monomers) connected by springs (bonds), simplifying the complex molecular structure into a more manageable form. This abstraction is particularly useful for studying the macroscopic properties of polymers, such as their elasticity, viscosity, and thermal behaviour, without having to learn chemistry.
+Polymer physics is a key area of study in materials science and engineering, focusing on understanding the behaviour of polymeric materials. Polymers are large molecules composed of repeating units, and they play a crucial role in a wide range of applications, from everyday household items to high-performance engineering materials. One of the fundamental models used in polymer physics, especially in coarse-grained molecular dynamics (CGMD) simulations, is the Bead-Spring model. This model represents polymers as a series of beads (monomers) connected by springs (bonds), simplifying the complex molecular structure into a more manageable form. This abstraction is particularly useful for studying the macroscopic properties of polymers, such as their elasticity, viscosity, and thermal behaviour from fundamental physics principles.
 
-### Task 8: Read the first chapter of Introduction to Polymer Physics by M. Doi
+### Task 8: Read the following chapters of Introduction to Polymer Physics by M. Doi
+* Chapter 1
+* Chapter 4.1, 4.2
 
 The unit system in CGMD simulations typically involves reduced units. This system simplifies calculations and can be converted to real-world units based on the material being simulated if needed (you will probably not). The unit system in our LAMMPS simulations is known as Lennard-Jones (LJ) units. You will hear this name quite often. 
 
@@ -158,13 +160,14 @@ In the next section, you will learn about how to use python to calculate certain
 
 1. End-to-end distance: The measure of the linear size of the polymer molecule, important for understanding the spatial configuration of the polymer chain.
 
-    $\vec{R}_{ee} = $
+    ![image](.figs/ree.png)
 2. Radius of gyration: A key metric for the size of the polymer, reflecting how its mass is distributed around the center of mass.
 
-    $R_g^2 = \frac{1}{N} \sum_{i=1}^{N} (\vec{R}_i - \vec{R}_{CM})^2 $ 
+    ![image](.figs/rg2.png)
 
 3. Mean squared displacement: Offers insights into the motion of polymer segments over time, critical for studying diffusion processes.
 
+    ![image](.figs/msd.png)
 
 ## Part 4: Introduction to Python
 
