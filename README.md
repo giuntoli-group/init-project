@@ -88,6 +88,8 @@ cd /scratch/$USER
 ```
 ### Task 3: Create a new directory named ```tutorial``` in this partition.
 
+> **Hint**: Check the commands given in Part 1.
+
 
 Before running our simulations, we need to load our simulation software LAMMPS. This is already installed on Habrok. Type the following: 
 
