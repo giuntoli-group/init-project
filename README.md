@@ -245,3 +245,14 @@ After running your simulation and analysing the data with Python, the next step 
 1. What is the expected end-to-end distance of a polymer chain with 100 beads?
 2. What is the end-to-end distance your measured? How does it compare to the scaling law that you've learnt about?
     - Explain the difference between the theoretical and the numerical values of $R_{ee}$
+
+
+## Part 6: Submitting your first simulation to the computer cluster
+
+So far, we've run a single simulations on the interactive node of Habrok. Now, we're going to submit this simulation to the compute nodes. There're several ways of achieving this. First approach is using a bash script that submits multiple jobs. The second and more useful approach for us is to use a workflow/data management tool, namely [signac](https://signac.io).
+
+Let's start with submitting the previous simulation as a job. First, locate the job submission script on github named `submit.sh`
+
+```bash
+sbatch submit.sh
+```
