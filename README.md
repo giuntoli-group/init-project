@@ -201,9 +201,10 @@ conda env create -f environment.yml
 We can now analyse our first simulation. The following script computes the mean-squared displacement of the beads over the simulation trajectory. It also computes the end-to-end distance of our polymer chain at each time frame. Your task is to run the `post_processing.py` script and plot the results. 
 
 ```bash
+conda activate <your_env_name> # this will allow us to access Python modules
 python post_processing.py
 ```
-
+> **NOTE**: If you've already loaded LAMMPS as a module, you have to unload it by typing `module purge`. LAMMPS has a dependency on Python 3.9 and once loaded, it will override our Python version, which is 3.11.6.
 
 Plot the analysis results:
 
@@ -245,6 +246,14 @@ After running your simulation and analysing the data with Python, the next step 
 1. What is the expected end-to-end distance of a polymer chain with 100 beads?
 2. What is the end-to-end distance your measured? How does it compare to the scaling law that you've learnt about?
     - Explain the difference between the theoretical and the numerical values of $R_{ee}$
+
+
+A part of the interpretation includes the visualisation of the simulation trajectory. This is a file containing the positions and the velocities of particles. Checking your trajectories visually could give you some ideas on what might have gone wrong in the simulation. You can also generate nice images and videos!
+
+
+### Task 12: Read the tutotial document `ovito_tutorial.pdf` and visualise the trajectory of your simulation using OVITO.
+
+
 
 
 ## Part 6: Submitting your first simulation to the computer cluster
