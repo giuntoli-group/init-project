@@ -269,3 +269,206 @@ Let's start with submitting the previous simulation as a job. First, locate the 
 ```bash
 sbatch submit.sh
 ```
+
+## Part 7: Submitting simulations using Signac
+
+We ran/submitted and analysed the simulations for a system with chain length = 100. Now what if we want to compare these results to another system with chain length = 200? The most straightforward way would be to create another folder, copy all the scripts there, run the simulation again and compare the results. Easy enough! But what if we want to change the Lennard Jones cutoff for each of these chains? Now that's 4 simulations. As we explore more and more parameters like this, the number of folders we need to create can easily becomes very large.
+Signac helps automate these tasks.
+
+First download and copy the `signac` folder to Habrok.
+
+We will simulate 4 systems with different parameters:
+system-1: (chain length:100, LJ cutoff: 1.12)
+system-2: (chain length:100, LJ cutoff: 2.5)
+system-3: (chain length:200, LJ cutoff: 1.12)
+system-4: (chain length:200, LJ cutoff: 2.5)
+
+Open and read the ``init.py`` and ``project.py`` files using nano or vim text editors.
+You can open a file in nano with the command:
+```bash
+nano <file-name>
+```
+To close the opened file in nano press ``Ctrl + X``.
+
+
+### Task 13: Run the command below to generate 4 folders for the simulations
+
+```bash
+cd signac/
+python init.py
+```
+This will create a new folder called ``workspace/`` and create 4 sub-folders inside corresponding to each system.
+Type the following and verify you have the correct subfolders and files inside it:
+```bash
+tree workspace/
+``` 
+Your output should be:
+```
+workspace/  
+├── 03077eadbf3ec3b7ffcc8bbaf1a031bc  
+│ └── signac_statepoint.json  
+├── 0ebdf08bd785822d880c365c79d997ca  
+│ └── signac_statepoint.json  
+├── 58ad0af8183524791b0410b3a71bcae1  
+│ └── signac_statepoint.json  
+└── b495ea8b10f7d505a78a036227448ea3  
+└── signac_statepoint.json  
+  
+4 directories, 4 files
+```
+
+### Task 14: Create chains for all the systems with signac using the command below
+
+```bash
+python project.py run -o create_chain
+```
+This will run the create_chain.py script as before for all the systems. We can verify the files are created by running 
+``tree workspace/`` as before. The output now should be:
+```
+workspace/  
+├── 03077eadbf3ec3b7ffcc8bbaf1a031bc  
+│ ├── signac_statepoint.json  
+│ └── start.data  
+├── 0ebdf08bd785822d880c365c79d997ca  
+│ ├── signac_statepoint.json  
+│ └── start.data  
+├── 58ad0af8183524791b0410b3a71bcae1  
+│ ├── signac_statepoint.json  
+│ └── start.data  
+└── b495ea8b10f7d505a78a036227448ea3  
+├── signac_statepoint.json  
+└── start.data  
+  
+4 directories, 8 files
+```
+
+#### Task 14b: Compare the command you used in Task 5 to run the ``create_chain.py``  and the first *command_to_run* variable in project.py   
+
+
+### Task 15: Run the simulation for all systems with signac using the command below
+
+```bash
+python project.py submit -o run_simulation
+```
+
+Creating the chains is a computationally inexpensive task. So we ran it in the interactive/login node itself by using  ``python project.py run``. Simulations should not be run on the interactive/login node, they should be submitted as jobs. That is why we used ``python project.py submit`` for  this task.
+Once the simulations are finished, all the files generated can be found in the respective sub-folders in ``workspace/``. 
+The output of ``tree workspace/`` after the simulations are finished will be:
+```bash
+workspace/  
+├── 03077eadbf3ec3b7ffcc8bbaf1a031bc  
+│ ├── final.data  
+│ ├── log.lammps  
+│ ├── out.lammps  
+│ ├── relaxed.data  
+│ ├── signac_statepoint.json  
+│ ├── start.data  
+│ ├── traj.lin  
+│ └── traj.log  
+├── 0ebdf08bd785822d880c365c79d997ca  
+│ ├── final.data  
+│ ├── log.lammps  
+│ ├── out.lammps  
+│ ├── relaxed.data  
+│ ├── signac_statepoint.json  
+│ ├── start.data  
+│ ├── traj.lin  
+│ └── traj.log  
+├── 58ad0af8183524791b0410b3a71bcae1  
+│ ├── final.data  
+│ ├── log.lammps  
+│ ├── out.lammps  
+│ ├── relaxed.data  
+│ ├── signac_statepoint.json  
+│ ├── start.data  
+│ ├── traj.lin  
+│ └── traj.log  
+└── b495ea8b10f7d505a78a036227448ea3  
+├── final.data  
+├── log.lammps  
+├── out.lammps  
+├── relaxed.data  
+├── signac_statepoint.json  
+├── start.data  
+├── traj.lin  
+└── traj.log  
+  
+4 directories, 32 files
+```
+### Task 16: Write a new operation in ``project.py`` to run the post processing script
+The above two tasks, *create_chain* and *run_simulation* are called operations in signac language. Now we will write another operation to run the post processing on each of our simulations. After you have written the operation, run it in the login/interactive node using signac.  
+```python
+from flow import FlowProject  
+import os  
+  
+class Project(FlowProject):  
+pass  
+  
+##########################  
+# Labels  
+#########################  
+  
+@Project.label  
+def chain_created(job):  
+return job.isfile('start.data')  
+  
+@Project.label  
+def simulation_complete(job):  
+return job.isfile('final.data')  
+  
+  
+##########################  
+# Operations  
+#########################  
+  
+@Project.post(chain_created)  
+@Project.operation(with_job = True)  
+def create_chain(job):  
+  
+	chain_length = job.sp.chain_length  
+	python_script_location = job.project.path + '/scripts/create_chain.py'  
+  
+	command_to_run = f'python {python_script_location} {chain_length}'  
+  
+	print(f'\nrunning create_chain.py on job id {job.id} to generate a chain with chain length = {chain_length}\n')  
+	
+	os.system(command_to_run)  
+  
+@Project.pre(chain_created)  
+@Project.post(simulation_complete)  
+@Project.operation(with_job = True)  
+def run_simulation(job):  
+  
+	lj_cutoff = job.sp.lj_cutoff  
+	lammps_script_location = job.project.path + '/scripts/in.single_chain'  
+  
+	command_to_run = f'srun lmp -screen out.lammps -in {lammps_script_location} -v lj_cutoff {lj_cutoff}'  
+  
+	os.system(command_to_run)  
+ 
+@Project.post(simulation_complete)  
+@Project.operation(with_job = True)  
+def post_process(job):  
+  
+  # create a variable called python_script_location similar to the one
+  # in the create_chain operation
+	#######################
+	# YOUR CODE GOES HERE #
+	####################### 
+  
+  # create a variable called command_to_run similar to the one in
+  # the create_chain operation. This variable should be similar to 
+  # the command you used in Task 11.
+ 	#######################
+	# YOUR CODE GOES HERE #
+	#######################  
+  
+	print(f'\nrunning post_process.py on job id {job.id}')  
+	
+	os.system(command_to_run)  
+  
+if __name__=="__main__":  
+Project().main()
+
+```
+
