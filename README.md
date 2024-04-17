@@ -146,6 +146,8 @@ This should take approximately two minutes and you will see that information on 
 
 ### Task 7: Search for all the command you see in `in.single_chain` on LAMMPS [documentation](https://docs.lammps.org/Manual.html) and learn what they do
 
+You can use text editors such as [vim](https://opensource.com/article/19/3/getting-started-vim) or [nano](https://tecadmin.net/getting-started-with-nano/) on Habrok. These are pre-installed in all Linux distributions, so you can simply type `vim in.single_chain` or `nano in.single_chain` to get started.
+
 ## Part 3: Introduction to Polymer Physics
 
 Polymer physics is a key area of study in materials science and engineering, focusing on understanding the behaviour of polymeric materials. Polymers are large molecules composed of repeating units, and they play a crucial role in a wide range of applications, from everyday household items to high-performance engineering materials. One of the fundamental models used in polymer physics, especially in coarse-grained molecular dynamics (CGMD) simulations, is the Bead-Spring model. This model represents polymers as a series of beads (monomers) connected by springs (bonds), simplifying the complex molecular structure into a more manageable form. This abstraction is particularly useful for studying the macroscopic properties of polymers, such as their elasticity, viscosity, and thermal behaviour from fundamental physics principles.
@@ -188,7 +190,7 @@ conda --version
 ```
 The output should be similar to this `conda 23.7.4`. We've made a list of libraries you need in the `environment.yml` file. 
 
-==NOTE: Make sure to modify the line `prefix: /home4/s123456/` in `environment.yml` file with the correct path before running the below command.== Type `cd /scratch/$USER` and replace **prefix: `/home4/s123456/`** by the output of this command. You can use text editors such as [vim](https://opensource.com/article/19/3/getting-started-vim) or [nano](https://tecadmin.net/getting-started-with-nano/) on Habrok. These are pre-installed in all Linux distributions, so you can simply type `vim` or `nano` to get started.
+**NOTE**: Make sure to modify the line `prefix: /home4/s123456/` in `environment.yml` file with the correct path before running the below command.== Type `cd /scratch/$USER` and replace **prefix: `/home4/s123456/`** by the output of this command.
 
 Once conda is loaded and the enviroment file is updated accordingly, you can run the below command to install the libraries. This process might take a couple of minutes, be patient.
 
