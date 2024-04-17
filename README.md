@@ -272,15 +272,19 @@ sbatch submit.sh
 
 ## Part 7: Submitting simulations using Signac
 
-We ran/submitted and analysed the simulations for a system with chain length = 100. Now what if we want to compare these results to another system with chain length = 200? The most straightforward way would be to create another folder, copy all the scripts there, run the simulation again and compare the results. Easy enough! But what if we want to change the Lennard Jones cutoff for each of these chains? Now that's 4 simulations. As we explore more and more parameters like this, the number of folders we need to create can easily becomes very large.
+We ran/submitted and analysed the simulations for a system with chain length = 100. Now what if we want to compare these results to another system with chain length = 200? The most straightforward way would be to create another folder, copy all the scripts there, run the simulation again and compare the results. Easy enough! But what if we want to change the Lennard Jones cutoff for each of these chains? Now that's 4 simulations. As we explore more and more parameters like this, the number of folders we need to create and systems we to analyse can easily becomes very large.
 Signac helps automate these tasks.
 
 First download and copy the `signac` folder to Habrok.
 
 We will simulate 4 systems with different parameters:
+
 system-1: (chain length:100, LJ cutoff: 1.12)
+
 system-2: (chain length:100, LJ cutoff: 2.5)
+
 system-3: (chain length:200, LJ cutoff: 1.12)
+
 system-4: (chain length:200, LJ cutoff: 2.5)
 
 Open and read the ``init.py`` and ``project.py`` files using nano or vim text editors.
