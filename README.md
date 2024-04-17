@@ -148,6 +148,8 @@ This should take approximately two minutes and you will see that information on 
 
 You can use text editors such as [vim](https://opensource.com/article/19/3/getting-started-vim) or [nano](https://tecadmin.net/getting-started-with-nano/) on Habrok. These are pre-installed in all Linux distributions, so you can simply type `vim in.single_chain` or `nano in.single_chain` to get started.
 
+[(HOW TO EXIT VIM)](https://stackoverflow.com/a/11828573)
+
 ## Part 3: Introduction to Polymer Physics
 
 Polymer physics is a key area of study in materials science and engineering, focusing on understanding the behaviour of polymeric materials. Polymers are large molecules composed of repeating units, and they play a crucial role in a wide range of applications, from everyday household items to high-performance engineering materials. One of the fundamental models used in polymer physics, especially in coarse-grained molecular dynamics (CGMD) simulations, is the Bead-Spring model. This model represents polymers as a series of beads (monomers) connected by springs (bonds), simplifying the complex molecular structure into a more manageable form. This abstraction is particularly useful for studying the macroscopic properties of polymers, such as their elasticity, viscosity, and thermal behaviour from fundamental physics principles.
