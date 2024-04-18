@@ -5,3 +5,4 @@ traj.lin
 traj.log
 log.lammps
 relaxed.data
+final.data
