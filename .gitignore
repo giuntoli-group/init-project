@@ -1,1 +1,7 @@
 signac/workspace/**
+signac/.signac/
+start.data
+traj.lin
+traj.log
+log.lammps
+relaxed.data
