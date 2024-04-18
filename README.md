@@ -414,11 +414,11 @@ pass
   
 @Project.label  
 def chain_created(job):  
-	return job.isfile('start.data')  
+    return job.isfile('start.data')  
   
 @Project.label  
 def simulation_complete(job):  
-	return job.isfile('final.data')  
+    return job.isfile('final.data')  
 
 
 ##########################  
@@ -454,22 +454,22 @@ def run_simulation(job):
 @Project.operation(cmd=True, with_job=True)  
 def post_process(job):  
   
-  # create a variable called python_script_location similar to the one
-  # in the create_chain operation
-	#######################
-	# YOUR CODE GOES HERE #
-	####################### 
+    # create a variable called python_script_location similar to the one
+    # in the create_chain operation
+    #######################
+    # YOUR CODE GOES HERE #
+    ####################### 
+
+    # create a variable called command_to_run similar to the one in
+    # the create_chain operation. This variable should be similar to
+    # the command you used in Task 11.
+    #######################
+    # YOUR CODE GOES HERE #
+    #######################  
   
-  # create a variable called command_to_run similar to the one in
-  # the create_chain operation. This variable should be similar to 
-  # the command you used in Task 11.
- 	#######################
-	# YOUR CODE GOES HERE #
-	#######################  
-  
-	print(f'\nrunning post_process.py on job id {job.id}')  
+    print(f'\nrunning post_process.py on job id {job.id}')  
 	
-	return(command_to_run)  
+    return(command_to_run)  
   
 if __name__=="__main__":  
 Project().main()
