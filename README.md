@@ -109,6 +109,11 @@ Once you verify that you have access to `lmp` command, hit `ctrl+c` to exit. Now
 
 ### Task 4: Navigate to ```tutorial``` and copy the scripts and the data files from your computer to here.
 
+Assuming that you have a folder named `tutorial` on your computer, you can copy it to Habrok by the following command.
+```bash
+scp -r tutorial/ s123456@login1.hb.hpc.rug.nl:/scratch/s123456
+```
+
 Type the following and make sure that you are in the correct directory and you have the necessary files.
 ```bash=
 pwd
