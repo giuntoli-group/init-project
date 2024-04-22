@@ -425,6 +425,9 @@ def chain_created(job):
 def simulation_complete(job):  
     return job.isfile('final.data')  
 
+@Project.label  
+def post_process_complete(job):  
+    return job.isfile('times_log.txt')
 
 ##########################  
 # Operations  
@@ -455,7 +458,7 @@ def run_simulation(job):
 
     return(command_to_run)
  
-@Project.post(simulation_complete)  
+@Project.post(post_process_complete)  
 @Project.operation(cmd=True, with_job=True)  
 def post_process(job):  
   
