@@ -83,7 +83,7 @@ After connecting to Habrok, you'll navigate to a suitable directory to run your 
 
 First, navigate to the scratch partition on Habrok by typing the following.
 
-```bash!
+```bash
 cd /scratch/$USER
 ```
 ### Task 3: Create a new directory named ```tutorial``` in this partition.
@@ -107,22 +107,28 @@ using 1 OpenMP thread(s) per MPI task
 
 Once you verify that you have access to `lmp` command, hit `ctrl+c` to exit. Now, we are ready to run our first simulation. 
 
-### Task 4: Navigate to ```tutorial``` and copy the scripts and the data files from your computer to here.
+### Task 4: Transfer the files from github to your local machine, then copy the scripts and the data files from your computer to `tutorial` on Habrok.
 
-Assuming that you have a folder named `tutorial` on your computer, you can copy it to Habrok by the following command.
+Run the following from your local machine
+
 ```bash
-scp -r tutorial/ s123456@login1.hb.hpc.rug.nl:/scratch/s123456
+cd
+git clone https://github.com/giuntoli-group/init-project.git
+```
+How would you copy the scripts from `init-project` to `tutorial`? Try to do this by using the commands you've just learnt then run the following to transfer them to Habrok.
+```bash
+scp -r tutorial s123456@login1.hb.hpc.rug.nl:/scratch/s123456/
 ```
 
-Type the following and make sure that you are in the correct directory and you have the necessary files.
-```bash=
+Type the following on the remote machine (Habrok) and make sure that you are in the correct directory and you have the necessary files.
+```bash
+cd /scratch/$USER/tutorial
 pwd
 ls
 ```
 Make sure that your output is the same as the ones below
 
 ![image](.figs/pwd_out.png)
-
 
 
 Let's generate a polymer chain that we will simulate. We use Python to generate our polymer architecture. This is a simple example of an architecture creation, but you will use the same principle in your project too.
