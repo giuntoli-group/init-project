@@ -138,7 +138,7 @@ Let's generate a polymer chain that we will simulate. We use Python to generate 
 
 
 ```bash
-python create_chain.py 100
+python3 create_chain.py 100
 ```
 Here, 100 is an input to the Python script. The script is initially written to generate star like architectures that you might work with. You don't need to know what the script does at this point.
 
