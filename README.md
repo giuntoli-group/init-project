@@ -177,15 +177,15 @@ In the next section, you will learn about how to use python to calculate certain
 
 1. End-to-end distance: The measure of the linear size of the polymer molecule, important for understanding the spatial configuration of the polymer chain.
 
-    $$\vec{R}_{ee} = \sum_{i=1}^{N} \vec{r}_i$$
+    $$ \vec{R}_{ee} = \sum_{i=1}^{N} \vec{r}_i $$
 
 2. Radius of gyration: A key metric for the size of the polymer, reflecting how its mass is distributed around the center of mass.
 
-    $$R_g^2 = \frac{1}{N}\sum_{i=1}^{N}\left\lVert \vec{r}_i - \vec{r}_{\text{CM}} \right\rVert^2$$
+    $$ R_g^2 = \frac{1}{N}\sum_{i=1}^{N}\left\lVert \vec{r}_i - \vec{r}_{\text{CM}} \right\rVert^2 $$
 
 3. Mean squared displacement: Offers insights into the motion of polymer segments over time, critical for studying diffusion processes.
 
-    $$\langle \vec{\Delta r}^2(t) \rangle = \langle (\vec{r}(t) - \vec{r}(0))^2 \rangle =  \frac{1}{N}\sum_{i=1}^{N} \left\lVert \vec{r}_i(t) - \vec{r}_i(0) \right\rVert^2$$
+    $$ \langle \vec{\Delta r}^2(t) \rangle = \langle (\vec{r}(t) - \vec{r}(0))^2 \rangle =  \frac{1}{N}\sum_{i=1}^{N} \left\lVert \vec{r}_i(t) - \vec{r}_i(0) \right\rVert^2 $$
 
 ## Part 4: Introduction to Python
 
