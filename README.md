@@ -229,7 +229,6 @@ python post_processing.py
 
 Plot the analysis results:
 
-
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -259,6 +258,7 @@ times_log = np.loadtxt('times_log.txt')
 
 #######################
 ```
+You might want to run the plotting script locally once you fetch the data from Habrok so that you can interact with the plot and see it immediately. Since Habrok is a remote machine without a graphical interface, you need to first save your plots in a format of your choice (`.pdf`, `.png`, etc.), then copy that file to your local machine to visualise. 
 
 ## Part 5: Interpreting your results
 
