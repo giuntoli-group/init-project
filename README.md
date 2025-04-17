@@ -43,7 +43,7 @@ Here are some fundamental commands you will use:
 
 ### Remote connection to Habrok
 
-To connect to computer clusters like Habrok and Nieuwpoort, you'll use SSH (Secure Shell). SSH allows you to securely connect to another computer over the internet. Click [here](https://wiki.hpc.rug.nl/habrok/connecting_to_the_system/connecting) for more information on how to connect to Habrok
+Make sure that you have access to Habrok, if not request an account from [here](https://wiki.hpc.rug.nl/habrok/introduction/policies#getting_access). To connect to computer clusters like Habrok and Nieuwpoort, you'll use SSH (Secure Shell). SSH allows you to securely connect to another computer over the internet. Click [here](https://wiki.hpc.rug.nl/habrok/connecting_to_the_system/connecting) for more information on how to connect to Habrok
 
 For Mac and Linux users, open the terminal and type:
 
